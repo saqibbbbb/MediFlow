@@ -3,41 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <link rel="shortcut icon" href="Untitled-73.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Toggle Buttons */
-.toggle-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.toggle-buttons button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #eee;
-    color: #333;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.toggle-buttons button.active {
-    background-color: #32007d;
-    color: white;
-}
-
-.toggle-buttons button:hover {
-    background-color: #7400a1;
-    color: white;
-}
-
         /* Base Styles */
         * {
             margin: 0;
@@ -356,38 +326,35 @@
 
     <div class="login-container">
         <div class="login-box">
-            <h2 id="loginTitle">Login as</h2>
-            
-            <!-- Toggle Buttons -->
-<div class="toggle-buttons">
-    <button type="button" id="patientBtn" onclick="window.location.href='patient-login.html'">Patient</button>
-    <button type="button" id="driverBtn" onclick="window.location.href='driver-login.html'">Driver</button>
-</div>
-
-<!--         
-            <form id="loginForm">
+            <h2>Register to MediFlow</h2>
+            <form id="registerForm">
                 <div class="input-group">
-                    <label id="emailLabel" for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="driverName">Driver Name</label>
+                    <input type="text" id="driverName" name="driverName" required>
                 </div>
                 <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
+                    <label for="licensePhoto">License Photo</label>
+                    <input type="file" id="licensePhoto" name="licensePhoto" required>
                 </div>
-                <button type="submit" class="login-btn">Login</button>
-            </form> -->
-        
-            <!-- <div class="login-options">
-                <p>Don't have an account? <a href="#">Sign up</a></p>
-                <p><a href="#">Forgot password?</a></p>
+                <div class="input-group">
+                    <label for="aadharCard">Aadhar Card</label>
+                    <input type="file" id="aadharCard" name="aadharCard" required>
+                </div>
+                <div class="input-group">
+                    <label for="evocCertificate">EVOC Certificate</label>
+                    <input type="file" id="evocCertificate" name="evocCertificate" required>
+                </div>
+                <div class="input-group">
+                    <label for="hospitalName">Hospital Name</label>
+                    <input type="text" id="hospitalName" name="hospitalName" required>
+                </div>
+                <!-- <button type="submit" class="submit-btn">Register</button> -->
+                <button type="submit" class="login-btn">Register</button>
+            </form>
+            <div class="login-options">
+                <p>Already have an account? <a href="login.html">Login</a></p>
             </div>
-        
-            <div class="emergency-login">
-                <p>Need immediate assistance?</p>
-                <a href="emergency.html">Emergency Access</a>
-            </div> -->
         </div>
-        
     </div>
 
     <!-- Footer -->
@@ -411,65 +378,49 @@
 
     <script>
         // Mobile menu toggle
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const nav = document.querySelector('nav');
-
-mobileMenuBtn.addEventListener('click', function() {
-    this.classList.toggle('active');
-    nav.classList.toggle('active');
-});
-
-// Login form logic
-const loginForm = document.getElementById('loginForm');
-const loginTitle = document.getElementById('loginTitle');
-const patientBtn = document.getElementById('patientBtn');
-const driverBtn = document.getElementById('driverBtn');
-const emailLabel = document.getElementById('emailLabel');
-
-// Default login type
-let userType = "Patient";
-
-// Switch between Patient and Driver login
-patientBtn.addEventListener('click', function() {
-    userType = "Patient";
-    loginTitle.textContent = "Login as Patient";
-    emailLabel.textContent = "Email";
-    
-    patientBtn.classList.add("active");
-    driverBtn.classList.remove("active");
-});
-
-driverBtn.addEventListener('click', function() {
-    userType = "Driver";
-    loginTitle.textContent = "Login as Driver";
-    emailLabel.textContent = "Driver ID or Email";
-    
-    driverBtn.classList.add("active");
-    patientBtn.classList.remove("active");
-});
-
-// Login form submission
-loginForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    // Simulating login process
-    localStorage.setItem('mediflowUser', JSON.stringify({
-        email: email,
-        userType: userType,
-        isLoggedIn: true
-    }));
-
-    // Redirect based on login type
-    if (userType === "Patient") {
-        window.location.href = 'dashboard.html';
-    } else {
-        window.location.href = 'driver_dashboard.html';
-    }
-});
-
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+        
+        /* // Registration form submission
+        const registerForm = document.getElementById('registerForm');
+        
+        registerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+            
+            // Store user info in localStorage (for demo purposes)
+            localStorage.setItem('mediflowUser', JSON.stringify({
+                name: name,
+                email: email,
+                isLoggedIn: true
+            }));
+            
+            // Redirect to dashboard
+            indow.location.href = 'dashboard.html';
+        }); */
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            for (const [key, value] of formData.entries()) {
+                console.log(`${key}:`, value);
+            }
+            alert('Form submitted successfully!');
+            window.location.href = 'dashboard.html';
+        });
     </script>
 </body>
 </html>

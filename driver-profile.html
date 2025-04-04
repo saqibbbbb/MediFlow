@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+     <link rel="stylesheet" href="driver-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Driver Profile - MediFlow</title>
+    <link rel="shortcut icon" href="Untitled-73.png" type="image/x-icon">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="logo-container">
+            <div class="logo-text">
+                <span class="medi">Medi</span><span class="flow">Flow</span>
+            </div>
+        </div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="main-content">
+        <!-- Header -->
+        <header>
+            <div class="container" id="header1">
+                <div class="logo">
+                    <img src="Untitled-72.png" alt="MediFlow Logo">
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="driver-dashboard.html">Dashboard</a></li>
+                        <li><a href="driver-profile.html" class="active">Profile</a></li>
+                        <li><a href="#" id="logout-btn">Logout</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Profile Section -->
+        <section class="profile-section">
+            <div class="container">
+                <div class="profile-container">
+                    <div class="profile-header">
+                        <h2>Driver Profile</h2>
+                    </div>
+                    <div class="profile-content">
+                        <div class="profile-sidebar">
+                            <div class="profile-image">
+                                <img id="profile-avatar" src="img/driver_avatar.png" alt="Driver Profile">
+                            </div>
+                            <h3 id="profile-name">Driver Name</h3>
+                            <p class="profile-role">Ambulance Driver</p>
+                            <div class="profile-status">
+                                <span id="profile-status-indicator" class="status-available">● Available</span>
+                            </div>
+                        </div>
+                        <div class="profile-details">
+                            <div class="profile-card">
+                                <div class="card-header">
+                                    <h3>Personal Information</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="info-row">
+                                        <div class="info-label">Full Name:</div>
+                                        <div id="profile-full-name" class="info-value">Loading...</div>
+                                    </div>
+                                    <div class="info-row">
+                                        <div class="info-label">Email:</div>
+                                        <div id="profile-email" class="info-value">Loading...</div>
+                                    </div>
+                                    <div class="info-row">
+                                        <div class="info-label">Hospital:</div>
+                                        <div id="profile-hospital" class="info-value">Loading...</div>
+                                    </div>
+                                    <div class="info-row">
+                                        <div class="info-label">Tracker ID:</div>
+                                        <div id="profile-tracker-id" class="info-value">Loading...</div>
+                                    </div>
+                                    <div class="info-row">
+                                        <div class="info-label">Current Location:</div>
+                                        <div id="profile-location" class="info-value">
+                                            <a href="#" id="view-location-map" target="_blank">View on Map</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="profile-card">
+                                <div class="card-header">
+                                    <h3>Documents</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="info-row">
+                                        <div class="info-label">Driver's License:</div>
+                                        <div id="profile-license" class="info-value">
+                                            <a href="#" id="view-license" target="_blank">View License</a>
+                                        </div>
+                                    </div>
+                                    <div class="info-row">
+                                        <div class="info-label">Aadhaar Card:</div>
+                                        <div id="profile-aadhaar" class="info-value">
+                                            <a href="#" id="view-aadhaar" target="_blank">View Aadhaar Card</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="profile-actions">
+                                <button id="edit-profile" class="btn primary-btn">
+                                    <i class="fas fa-edit"></i> Edit Profile
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footertexting">
+                        <div class="footer-links">
+                            <a href="index.html">HOME</a>
+                            <a href="chat.html">AI ASSISTANT</a>
+                            <a href="contact.html">CONTACT US</a>
+                            <a href="about.html">ABOUT US</a>
+                        </div>
+                        <div class="copyright">
+                            <h2>MediFlow</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div id="edit-profile-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Profile</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="edit-profile-form">
+                    <div class="form-group">
+                        <label for="edit-name">Full Name</label>
+                        <input type="text" id="edit-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-email">Email</label>
+                        <input type="email" id="edit-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-hospital">Hospital Affiliation</label>
+                        <select id="edit-hospital" name="hospital" required>
+                            <!-- Hospital options will be loaded dynamically -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-location">Current Location</label>
+                        <div class="location-input">
+                            <input type="text" id="edit-location" name="location" required>
+                            <button type="button" id="edit-get-location" class="location-btn">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn primary-btn">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script src="loading.js"></script>
+    <script src="driver-profile.js"></script>
+    <script src="hospital-data.js"></script>
+</body>
+</html>
